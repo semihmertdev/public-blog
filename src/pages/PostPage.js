@@ -9,7 +9,7 @@ function PostPage() {
   const { id } = useParams();
 
   return (
-    <div>
+    <div className="post-page">
       <PostDetail postId={id} />
       <CommentSection postId={id} />
     </div>

@@ -24,7 +24,7 @@ function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className="register-page">
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
         <input 
@@ -55,4 +55,3 @@ function RegisterPage() {
 }
 
 export default RegisterPage;
-

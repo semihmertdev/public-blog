@@ -5,7 +5,7 @@ import PostList from '../components/PostList';
 
 function HomePage() {
   return (
-    <div>
+    <div className="home-page">
       <h1>Welcome to Our Blog</h1>
       <PostList />
     </div>

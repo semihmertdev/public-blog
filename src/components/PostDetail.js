@@ -22,7 +22,7 @@ function PostDetail({ postId }) {
   if (!post) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="post-detail">
       <h1>{post.title}</h1>
       <p>By: {post.author.username}</p>
       <div dangerouslySetInnerHTML={{ __html: post.content }} />

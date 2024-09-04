@@ -19,7 +19,7 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="login-page">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <input 
