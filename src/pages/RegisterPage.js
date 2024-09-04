@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');  // Add a state for username
+  const [username, setUsername] = useState(''); 
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -14,10 +14,10 @@ function RegisterPage() {
       const response = await axios.post('http://localhost:5000/api/auth/register', {
         email,
         password,
-        username   // Include username in the request body
+        username  
       });
       localStorage.setItem('token', response.data.token);
-      navigate('/');
+      navigate('/login');
     } catch (error) {
       console.error('Registration failed:', error.response.data);
     }
