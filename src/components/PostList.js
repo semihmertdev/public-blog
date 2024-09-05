@@ -8,7 +8,7 @@ function PostList() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('https://backend-bpeh3y9qy-semihmertdevs-projects.vercel.app/api/posts');
+        const response = await axios.get('https://backend-api-ze9x.onrender.com/api/posts');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);

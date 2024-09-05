@@ -11,7 +11,7 @@ function RegisterPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://backend-bpeh3y9qy-semihmertdevs-projects.vercel.app/api/auth/register', {
+      const response = await axios.post('https://backend-api-ze9x.onrender.com/api/auth/register', {
         email,
         password,
         username

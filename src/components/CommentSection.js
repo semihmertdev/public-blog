@@ -27,7 +27,7 @@ function CommentSection({ postId }) {
     }
 
     try {
-      const response = await axios.post('https://backend-bpeh3y9qy-semihmertdevs-projects.vercel.app/api/comments', {
+      const response = await axios.post('https://backend-api-ze9x.onrender.com/api/comments', {
         content: newComment,
         postId: postId
       }, {
