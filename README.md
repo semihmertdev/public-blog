@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Blog Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React-based blog platform where users can read posts, register, log in, and leave comments. The admin panel for authors to manage posts and comments is available at a separate link. This project uses Tailwind CSS for styling and Axios for API interactions.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Authentication:** Users can register, log in, and log out using a token-based authentication system.
+- **Post Viewing:** View detailed blog posts with content, title, and author information.
+- **Commenting System:** Authenticated users can post comments on individual blog posts.
+- **Author/Admin Panel:** Authors can log in via a separate interface to manage posts and comments.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React:** Frontend framework for building the user interface.
+- **Tailwind CSS:** Utility-first CSS framework for styling.
+- **Axios:** Library for making HTTP requests to the backend API.
+- **React Router:** Client-side routing for navigating between pages.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Pages and Components
 
-### `npm test`
+### `App.js`
+This is the main file that sets up routing for the application. It uses React Router for routing between different pages:
+- Home Page (`/`)
+- Post Detail Page (`/post/:id`)
+- Login Page (`/login`)
+- Register Page (`/register`)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `HomePage.js`
+The homepage that lists the latest blog posts using the `PostList` component.
 
-### `npm run build`
+### `PostList.js`
+This component fetches and displays a list of blog posts. Each post links to its detailed page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `PostDetail.js`
+This component shows the detailed content of a blog post, including the title, author, and full content.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `CommentSection.js`
+This component allows users to view and post comments on a specific post. It handles form submission and integrates with the backend to store new comments.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `LoginPage.js`
+Users can log in by providing their email and password. The authentication token is stored in `localStorage` for subsequent authenticated requests.
 
-### `npm run eject`
+### `RegisterPage.js`
+Users can register by providing their username, email, and password. Upon successful registration, they are redirected to the login page.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `Header.js`
+The navigation bar at the top of the page that shows links to the home, login, and register pages. If a user is logged in, the "Logout" button is displayed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Node.js installed
+- NPM or Yarn installed
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Clone the repository:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        git clone https://github.com/yourusername/blog-platform.git
 
-### Code Splitting
+2. **Navigate to the project folder:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+        cd blog-platform
 
-### Analyzing the Bundle Size
+3. **Install dependencies:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+        npm install
 
-### Making a Progressive Web App
+4. **Start the development server:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+        npm run dev
 
-### Advanced Configuration
+5. **Open your browser and go to http://localhost:3000.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Author/Admin Interface
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For authors to log in and manage posts, use the following link:
+    
+[Admin Panel](https://admin-panel-silk-beta.vercel.app/login)
 
-### `npm run build` fails to minify
+## Backend API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app interacts with a backend API hosted on Render. API endpoints include:
+
+* **Posts:** `GET /api/posts` – Fetches all posts.
+* **Post Detail:** `GET /api/posts/:id` – Fetches a specific post.
+* **Comments:** `GET /api/comments/post/:postId` – Fetches comments for a specific post.
+* **Post Comment:** `POST /api/comments` – Posts a new comment (requires authentication).
+* **Login:** `POST /api/auth/login` – Authenticates a user.
+* **Register:** `POST /api/auth/register` – Registers a new user.
