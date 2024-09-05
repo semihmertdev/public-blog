@@ -19,6 +19,7 @@ function Header() {
             <>
               <li><Link to="/login" className="hover:underline">Login</Link></li>
               <li><Link to="/register" className="hover:underline">Register</Link></li>
+              <li><Link to="https://admin-panel-silk-beta.vercel.app/login" className="hover:underline">Author</Link></li>
             </>
           ) : (
             <li><button onClick={handleLogout} className="hover:underline">Logout</button></li>
