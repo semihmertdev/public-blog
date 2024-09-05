@@ -1,8 +1,5 @@
-// src/components/CommentSection.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Editor } from '@tinymce/tinymce-react';
 
 function CommentSection({ postId }) {
   const [comments, setComments] = useState([]);
@@ -22,10 +19,6 @@ function CommentSection({ postId }) {
     fetchComments();
   }, [postId]);
 
-  const handleEditorChange = (content) => {
-    setNewComment(content);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!token) {
@@ -43,42 +36,33 @@ function CommentSection({ postId }) {
         }
       });
       setComments([...comments, response.data]);
-      setNewComment('');  // Yorum eklendikten sonra TinyMCE içeriğini temizlemek için
+      setNewComment('');
     } catch (error) {
       console.error('Error posting comment:', error);
     }
   };
 
   return (
-    <div className="comment-section">
-      <h3>Comments</h3>
-      <ul>
+    <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+      <h3 className="text-lg font-bold mb-4">Comments</h3>
+      <ul className="space-y-4">
         {comments.map(comment => (
-          <li key={comment.id} className="comment">
-            <p dangerouslySetInnerHTML={{ __html: comment.content }} />
-            <small>By: {comment.user?.username || 'Unknown User'}</small>
+          <li key={comment.id} className="border-b pb-2">
+            <p>{comment.content}</p>
+            <small className="text-gray-500">By: {comment.user?.username || 'Unknown User'}</small>
           </li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit} className="comment-form">
-        <Editor
-          apiKey={process.env.REACT_APP_TINYMCE_API_KEY}  // .env dosyasından API anahtarını al
+      <form onSubmit={handleSubmit} className="mt-4">
+        <textarea
+          className="w-full p-2 border rounded-md mb-2"
           value={newComment}
-          init={{
-            height: 200,
-            menubar: false,
-            plugins: [
-              'advlist autolink lists link image charmap print preview anchor',
-              'searchreplace visualblocks code fullscreen',
-              'insertdatetime media table paste code help wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | bold italic backcolor | \
-                      alignleft aligncenter alignright alignjustify | \
-                      bullist numlist outdent indent | removeformat | help'
-          }}
-          onEditorChange={handleEditorChange}
+          onChange={(e) => setNewComment(e.target.value)}
+          required
         />
-        <button type="submit">Post Comment</button>
+        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+          Post Comment
+        </button>
       </form>
     </div>
   );

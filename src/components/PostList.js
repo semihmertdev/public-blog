@@ -1,5 +1,3 @@
-// src/components/PostList.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -21,12 +19,12 @@ function PostList() {
   }, []);
 
   return (
-    <div className="post-list">
-      <h2>Latest Posts</h2>
-      <ul>
+    <div className="mt-6">
+      <h2 className="text-2xl font-bold mb-4">Latest Posts</h2>
+      <ul className="space-y-4">
         {posts.map(post => (
           <li key={post.id}>
-            <Link to={`/post/${post.id}`}>{post.title}</Link>
+            <Link to={`/post/${post.id}`} className="text-blue-500 hover:underline">{post.title}</Link>
           </li>
         ))}
       </ul>

@@ -1,5 +1,3 @@
-// src/components/Header.js
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -13,17 +11,17 @@ function Header() {
   };
 
   return (
-    <header className="header">
+    <header className="bg-gray-800 text-white p-4">
       <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
+        <ul className="flex space-x-4">
+          <li><Link to="/" className="hover:underline">Home</Link></li>
           {!token ? (
             <>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/register">Register</Link></li>
+              <li><Link to="/login" className="hover:underline">Login</Link></li>
+              <li><Link to="/register" className="hover:underline">Register</Link></li>
             </>
           ) : (
-            <li><button onClick={handleLogout}>Logout</button></li>
+            <li><button onClick={handleLogout} className="hover:underline">Logout</button></li>
           )}
         </ul>
       </nav>
