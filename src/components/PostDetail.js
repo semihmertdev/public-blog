@@ -7,7 +7,7 @@ function PostDetail({ postId }) {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/posts/${postId}`);
+        const response = await axios.get(`https://backend-bpeh3y9qy-semihmertdevs-projects.vercel.app/api/posts/${postId}`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post:', error);

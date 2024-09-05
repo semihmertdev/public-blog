@@ -9,7 +9,7 @@ function CommentSection({ postId }) {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/comments/post/${postId}`);
+        const response = await axios.get(`https://backend-bpeh3y9qy-semihmertdevs-projects.vercel.app/api/comments/post/${postId}`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -27,7 +27,7 @@ function CommentSection({ postId }) {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/comments', {
+      const response = await axios.post('https://backend-bpeh3y9qy-semihmertdevs-projects.vercel.app/api/comments', {
         content: newComment,
         postId: postId
       }, {
