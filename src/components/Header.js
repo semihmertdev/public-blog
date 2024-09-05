@@ -13,7 +13,7 @@ function Header() {
   return (
     <header className="bg-gray-800 text-white p-4">
       <nav>
-        <ul className="flex space-x-4">
+        <ul className="flex justify-end space-x-4 text-white">
           <li><Link to="/" className="hover:underline">Home</Link></li>
           {!token ? (
             <>
